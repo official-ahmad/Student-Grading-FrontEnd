@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaLock, FaUser } from "react-icons/fa"; // Assuming react-icons is installed for icons
+import { FaLock, FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ const Login = () => {
       );
       if (response.status === 200) {
         toast.success("Success: Admin Logged In!");
+        navigate("/dashboard");
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Login Failed");
