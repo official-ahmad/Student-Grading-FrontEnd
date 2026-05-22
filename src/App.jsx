@@ -1,6 +1,7 @@
 import React from "react";
-import Login from "./login";
-import Dashboard from "./Dasbhoard";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+import ProtectedRoute from "./ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,7 +13,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
       <ToastContainer />
