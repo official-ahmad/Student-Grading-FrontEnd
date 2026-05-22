@@ -1,16 +1,78 @@
-# React + Vite
+**Student Grading System — Front-End**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Overview
 
-Currently, two official plugins are available:
+- **Purpose:** Front-end UI for the Student Grading System. Provides student and admin views, authentication, and recommendation features that interact with the Back-End API.
+- **Tech stack:** React (with Vite), React Router, Axios, Bootstrap + Tailwind (utility styles), react-hot-toast, react-toastify.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features
 
-## React Compiler
+- Login / Protected routes
+- Student dashboard and grades view
+- Admin controls (manage students, recommendations)
+- Recommendations UI integrated with recommendation service
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Project structure (important files)
 
-## Expanding the ESLint configuration
+- `src/main.jsx` — App entry and router setup
+- `src/App.jsx` — Top-level app layout
+- `src/Login.jsx` — Login page
+- `src/Dashboard.jsx` — Dashboard for users
+- `src/ProtectedRoute.jsx` — Route guard for authenticated pages
+- `src/Recommendations.jsx` — Recommendations page
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Prerequisites
+
+- Node.js (LTS recommended) and npm or yarn
+
+Environment variables
+
+- This project uses Vite. Provide the API base URL via `VITE_API_BASE_URL`.
+  - Example: `VITE_API_BASE_URL=http://localhost:5173`
+
+Common scripts (see `package.json`)
+
+- `npm install` — install dependencies
+- `npm run dev` — start development server (Vite, usually on port 5173)
+- `npm run build` — create production build
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run ESLint
+
+Run locally
+
+1. Install dependencies:
+
+```powershell
+npm install
+```
+
+2. Set environment variable (Windows PowerShell example):
+
+```powershell
+$env:VITE_API_BASE_URL = "http://localhost:8000"
+npm run dev
+```
+
+3. Open the app in your browser at the URL Vite prints (commonly `http://localhost:5173`).
+
+Build & Deploy
+
+- Build for production:
+
+```powershell
+npm run build
+```
+
+- The `dist/` folder produced by the build can be deployed to any static hosting (Vercel, Netlify, GitHub Pages, or a static file server).
+- If deploying to a platform that supports environment variables (Vercel/Netlify), set `VITE_API_BASE_URL` in the platform settings to point to your Back-End deployment.
+
+Backend integration notes
+
+- The front-end expects a REST API at `VITE_API_BASE_URL`. Common endpoints used by the UI include authentication, student data, and recommendations. When testing locally, run the Back-End server (for example from the `Back-End` folder) on the configured port.
+
+Troubleshooting
+
+- CORS: If API calls fail in the browser, ensure the Back-End allows the front-end origin or uses a permissive CORS setup during development.
+- Environment not picked up: make sure variables start with `VITE_` so Vite exposes them to the client.
+
+If you want the README in Urdu or need specific deployment instructions (Vercel/Netlify/Docker), tell me which platform and I will add step-by-step commands.

@@ -11,7 +11,8 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 
-const API_URL = "http://localhost:8000/api";
+// const API_URL = "http://localhost:8000/api";
+const API_URL = "https://student-grading-backend.onrender.com/api";
 
 const Recommendations = ({ adminToken }) => {
   const [recommendations, setRecommendations] = useState([]);

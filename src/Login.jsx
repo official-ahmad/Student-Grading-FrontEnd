@@ -24,7 +24,8 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/admin/login",
+        // "http://localhost:8000/api/admin/login",
+        "https://student-grading-backend.onrender.com/api/admin/login",
         {
           username,
           password,

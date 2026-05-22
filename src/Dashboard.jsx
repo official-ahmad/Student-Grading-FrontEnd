@@ -27,7 +27,8 @@ import {
 import { HiAcademicCap, HiUserGroup } from "react-icons/hi";
 import Recommendations from "./Recommendations";
 
-const API_URL = "http://localhost:8000/api";
+// const API_URL = "http://localhost:8000/api";
+const API_URL = "https://student-grading-backend.onrender.com/api";
 
 // Sidebar Component
 const Sidebar = ({ activeNav, setActiveNav, isOpen, setIsOpen }) => {
