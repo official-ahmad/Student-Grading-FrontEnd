@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "./api";
 import {
   FaExclamationCircle,
   FaCheckCircle,
@@ -10,9 +11,6 @@ import {
   FaTrophy,
   FaTimesCircle,
 } from "react-icons/fa";
-
-// const API_URL = "http://localhost:8000/api";
-const API_URL = "https://student-grading-backend.onrender.com/api";
 
 const Recommendations = ({ adminToken }) => {
   const [recommendations, setRecommendations] = useState([]);

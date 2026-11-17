@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { HiShieldCheck } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "./api";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -23,14 +24,10 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        // "http://localhost:8000/api/admin/login",
-        "https://student-grading-backend.onrender.com/api/admin/login",
-        {
-          username,
-          password,
-        },
-      );
+      const response = await axios.post(`${API_URL}/admin/login`, {
+        username,
+        password,
+      });
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("adminToken", response.data.token);
         toast.success("Login Successful!", { autoClose: 1000 });
